@@ -5,6 +5,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	Welcome to the TODO application
+	Welcome to the TODO application.
+	<ul>
+		<li th:each="todo: ${todos}">
+			<span th:text="${todo.assignee}"></span>:
+			<span th:text="${todo.description}"></span>
+		</li>
+	</ul>
 </body>
 </html>
