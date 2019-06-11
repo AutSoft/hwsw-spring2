@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import hu.autsoft.hwsw.spring.web.todo.model.Todo;
 
@@ -13,15 +14,18 @@ import hu.autsoft.hwsw.spring.web.todo.model.Todo;
 public class TodoController {
 	
 	List<Todo> todos = new ArrayList<>();
-	
-	{
-		todos.add(new Todo("Enni", "gabor"));
-	}
 
 	@GetMapping("/")
 	public String home(Map<String, Object> model) {
 		model.put("todos", todos);
+		model.put("newTodo", new Todo());
 		return "index";
+	}
+	
+	@PostMapping("/todo")
+	public String home(Todo todo) {
+		todos.add(todo);
+		return "redirect:/";
 	}
 	
 }

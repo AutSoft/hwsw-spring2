@@ -12,5 +12,11 @@
 			<span th:text="${todo.description}"></span>
 		</li>
 	</ul>
+	
+	<form th:action="@{/todo}" th:object="${newTodo}" method="post">
+		Description: <input th:field="*{description}"/> <br/>
+		Assignee: <input th:field="*{assignee}"/> <br/>
+		<input type="submit" value="Create"/>
+	</form>
 </body>
 </html>
